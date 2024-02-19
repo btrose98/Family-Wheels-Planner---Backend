@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Blueprint, jsonify, request
 from database.database import session
 from database.models import Reservation
@@ -7,6 +8,13 @@ reservation_blueprint = Blueprint('reservations', __name__)
 
 @reservation_blueprint.route('/reservations', methods=['GET'])
 def get_reservations():
+    current_time = datetime.now()
+    reservations = session.query(Reservation).filter(Reservation.enddatetime >= current_time).all()
+    reservations_data = [{'id': reservation.id, 'startdatetime': reservation.startdatetime, 'enddatetime': reservation.enddatetime, 'owner': reservation.owner, 'car': reservation.car} for reservation in reservations]
+    return jsonify(reservations_data), HttpStatus.OK
+
+@reservation_blueprint.route('/reservations-all', methods=['GET'])
+def get_all_reservations():
     reservations = session.query(Reservation).all()
     reservations_data = [{'id': reservation.id, 'startdatetime': reservation.startdatetime, 'enddatetime': reservation.enddatetime, 'owner': reservation.owner, 'car': reservation.car} for reservation in reservations]
     return jsonify(reservations_data), HttpStatus.OK
