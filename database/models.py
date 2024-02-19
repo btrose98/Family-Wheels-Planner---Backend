@@ -5,7 +5,7 @@ from database.database import Base
 class Person(Base):
     __tablename__ = "people"
 
-    id = Column("id", Integer, primary_key=True)
+    id = Column("id", Integer, primary_key=True, autoincrement=True)
     firstname = Column("firstname", String)
     lastname = Column("lastname", String)
 
@@ -20,7 +20,7 @@ class Person(Base):
 class Car(Base):
     __tablename__ = "cars"
 
-    id = Column("id", Integer, primary_key=True)
+    id = Column("id", Integer, primary_key=True, autoincrement=True)
     brand = Column("brand", String)
     owner = Column(Integer, ForeignKey("people.id"))
 
@@ -35,7 +35,7 @@ class Car(Base):
 class Reservation(Base):
     __tablename__ = "reservations"
 
-    id = Column("id", Integer, primary_key=True)
+    id = Column("id", Integer, primary_key=True, autoincrement=True)
     startdatetime = Column("startdatetime", DateTime)
     enddatetime = Column("enddatetime", DateTime)
     owner = Column(Integer, ForeignKey("people.id"))
