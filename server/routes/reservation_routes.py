@@ -8,6 +8,7 @@ reservation_blueprint = Blueprint('reservations', __name__)
 
 @reservation_blueprint.route('/reservations', methods=['GET'])
 def get_reservations():
+    print("get_reservations request")
     current_time = datetime.now()
     reservations = session.query(Reservation).filter(Reservation.enddatetime >= current_time).all()
     reservations_data = [{'id': reservation.id, 'startdatetime': reservation.startdatetime, 'enddatetime': reservation.enddatetime, 'owner': reservation.owner, 'car': reservation.car} for reservation in reservations]

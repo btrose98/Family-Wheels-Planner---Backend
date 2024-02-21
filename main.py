@@ -5,6 +5,9 @@ from database.database import Base, Session
 from server import server
 
 if __name__ == '__main__':
+
+    print("starting Family Wheels Planner backend")
+
     # Base.metadata.create_all(bind=Session().get_bind())
     # session = Session()
     #
