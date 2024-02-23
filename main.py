@@ -1,7 +1,4 @@
 # main.py
-from datetime import datetime
-from database.models import Person, Car, Reservation
-from database.database import Base, Session
 from server import server
 
 if __name__ == '__main__':
