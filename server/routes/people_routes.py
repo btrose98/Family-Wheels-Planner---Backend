@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from database.database import session
 from database.models import Person
-from utils.HttpStatus import HttpStatus
+from utils.http_status import HttpStatus
 
 people_blueprint = Blueprint('people', __name__)
 

@@ -2,7 +2,7 @@ from datetime import datetime
 from flask import Blueprint, jsonify, request
 from database.database import session
 from database.models import Reservation
-from utils.HttpStatus import HttpStatus
+from utils.http_status import HttpStatus
 
 reservation_blueprint = Blueprint('reservations', __name__)
 
